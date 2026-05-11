@@ -1,0 +1,264 @@
+f\documentclass[10pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[margin=1.45cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+
+% ---------- Page Setup ----------
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setstretch{1.03}
+
+% ---------- Colors ----------
+\definecolor{heading}{HTML}{111827}
+\definecolor{text}{HTML}{1F2937}
+\definecolor{muted}{HTML}{4B5563}
+\definecolor{rulecolor}{HTML}{D1D5DB}
+
+% ---------- Section Styling ----------
+\titleformat{\section}
+  {\large\bfseries\color{heading}}
+  {}
+  {0pt}
+  {}
+  [\vspace{2pt}{\color{rulecolor}\titlerule}]
+
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+% ---------- Lists ----------
+\setlist[itemize]{
+  leftmargin=1.4em,
+  itemsep=2pt,
+  topsep=3pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+% ---------- Custom Commands ----------
+\newcommand{\name}[1]{
+  {\Huge \bfseries \color{heading} #1}
+}
+
+\newcommand{\role}[1]{
+  \vspace{3pt}
+  {\large \color{text} #1}
+}
+
+\newcommand{\contact}[1]{
+  \vspace{6pt}
+  {\small \color{muted} #1}
+}
+
+\newcommand{\entry}[4]{
+  \textbf{\color{heading} #1} \hfill {\small \color{muted} #2}\\
+  {\color{text} #3} \hfill {\small \color{muted} #4}
+  \vspace{2pt}
+}
+
+\newcommand{\project}[3]{
+  \textbf{\color{heading} #1} \hfill {\small \color{muted} #2}\\
+  {\small \color{muted} #3}
+  \vspace{2pt}
+}
+
+\newcommand{\skillgroup}[2]{
+  \textbf{\color{heading} #1:} #2\par
+}
+
+% ---------- Document ----------
+\begin{document}
+\color{text}
+% ---------- Header ----------
+\begin{center}
+  \name{Mahros M. Al-Qabasy}
+    
+  \role{Computer Science Student \; | \; Backend \& Infrastructure Software Engineer}
+
+  \contact{
+    \href{https://mahros.dev}{mahros.dev}
+    \; | \;
+    \href{https://github.com/elqabasy}{github.com/elqabasy}
+    \; | \;
+    \href{mailto:m.elqabasy@hotmail.com}{m.elqabasy@hotmail.com}
+    \; | \;
+    \href{https://wa.me/201015888272}{010 15 888 272}
+    \; | \;
+    \href{https://linkedin.com/in/ma7ros}{in/ma7ros}
+  }
+\end{center}
+
+\vspace{4pt}
+
+% ---------- Summary ----------
+\section*{Summary}
+
+Computer Science student and early-career software engineer focused on backend systems, infrastructure automation, and security-aware software development. Experienced in building and deploying real-world business systems, including accounting workflows, admin dashboards, AI content automation, operational platforms, and privacy-focused tooling. Strong practical exposure to REST APIs, authentication, PostgreSQL, Redis, MongoDB, Docker, Nginx, GitHub Actions, and self-hosted production environments.
+
+
+
+\vspace{4pt}
+
+
+
+% ---------- Technical Skills ----------
+\section*{Technical Skills}
+
+\skillgroup{Backend Engineering}
+{TypeScript, Node.js, REST APIs, authentication, authorization, RBAC, API gateways, service integration, business workflow systems, domain-driven backend logic}
+
+\skillgroup{Databases \& Storage}
+{PostgreSQL, Redis, MongoDB, Prisma ORM, MinIO, object storage, database-backed workflows}
+
+\skillgroup{Frontend \& Dashboards}
+{React, Next.js, admin dashboards, internal tools, responsive web applications}
+
+\skillgroup{DevOps \& Infrastructure}
+{Docker, Docker Compose, Nginx, GitHub Actions, GHCR, VPS operations, TLS, reverse proxying, deployment automation, container health checks}
+
+\skillgroup{Security Engineering}
+{Ethical hacking foundations, penetration testing concepts, SOC analyst training, OWASP, secure API design, infrastructure hardening, vulnerability assessment}
+
+\skillgroup{Testing \& QA}
+{Postman, API testing, software testing fundamentals, validation workflows, AI-assisted testing orchestration}
+
+\skillgroup{Languages}
+{TypeScript, JavaScript, Go, Rust, Python, SQL}
+
+% ---------- Selected Engineering Work ----------
+\section*{Selected Engineering Work}
+
+\project
+  {QabasOne}
+  {\href{https://qabas.one}{qabas.one} \; | \; \href{https://github.com/qabasone}{github.com/qabasone}}
+  {Accounting and workflow platform built for Al-Qabasy company}
+
+\begin{itemize}
+  \item Built a business accounting and workflow system using ERPNext as the core accounting engine with custom workflow and approval logic around it.
+  \item Designed application-specific workflows for approvals, operational control, and business process automation.
+  \item Developed backend services and dashboard components supporting company operations, role-based actions, and administrative visibility.
+  \item Integrated accounting workflows with custom business interfaces to make ERP functionality more usable for internal teams.
+  \item Deployed the platform in a containerized production environment with reverse proxy routing and supporting infrastructure services.
+\end{itemize}
+
+\vspace{4pt}
+
+\project
+  {Alqabasy Go}
+  {\href{https://github.com/alqabasy-go}{github.com/alqabasy-go}}
+  {Driver daily transactions and operations system connected to the QabasOne ecosystem}
+
+\begin{itemize}
+  \item Built a dedicated operational system for driver transactions and daily business workflows.
+  \item Implemented full authentication features including user profiles, avatars, fingerprint-related flows, and two-factor authentication.
+  \item Developed a professional admin dashboard for managing users, transactions, operational data, and business processes.
+  \item Designed backend APIs and database flows to support real-world company operations and internal accountability.
+\end{itemize}
+
+\vspace{4pt}
+
+\project
+  {Pressiqo}
+  {\href{https://github.com/pressiqo}{github.com/pressiqo}}
+  {AI content automation platform developed for a client}
+
+\begin{itemize}
+  \item Developed an AI-powered content automation tool supporting reusable templates, agentic workflows, and automated publishing to WordPress.
+  \item Built backend workflows for content generation, transformation, template execution, and publishing automation.
+  \item Designed the system around practical client needs, reducing manual publishing effort and improving content workflow consistency.
+\end{itemize}
+
+\vspace{4pt}
+
+\project
+  {Obsura}
+  {\href{https://obsura.one}{obsura.one} \; | \; \href{https://github.com/obsura}{github.com/obsura}}
+  {Open-source redaction platform for securely removing sensitive information}
+
+\begin{itemize}
+  \item Built an open-source privacy and security tool for reviewing, styling, and securely redacting sensitive information from screenshots, text, and documents.
+  \item Designed product-facing workflows with attention to usability, sensitive data exposure risks, and secure-by-default handling.
+  \item Positioned the project around privacy-preserving review workflows and practical security tooling.
+\end{itemize}
+
+\vspace{4pt}
+
+\project
+  {Orqestly}
+  {AI Testing Orchestration Platform}
+  {AI-powered system for transforming requirements into executable software tests}
+
+\begin{itemize}
+  \item Designed an AI-assisted testing orchestration platform that converts software requirements into executable tests.
+  \item Focused on validating real running systems rather than only generating static test cases.
+  \item Explored orchestration workflows for requirement analysis, test generation, execution, and system validation.
+\end{itemize}
+
+\vspace{4pt}
+
+\project
+  {Al-Qabasy Company Website}
+  {\href{https://alqabasy.com}{alqabasy.com} \; | \; \href{https://github.com/alqabasy}{github.com/alqabasy}}
+  {Corporate website for a trading company}
+
+\begin{itemize}
+  \item Built and deployed a professional company website for Al-Qabasy, a trading company.
+  \item Delivered a production web presence aligned with business needs and deployed as part of a broader self-hosted infrastructure setup.
+\end{itemize}
+
+% ---------- Infrastructure ----------
+\section*{Infrastructure \& DevOps Experience}
+
+\begin{itemize}
+  \item Designed and operated a multi-project VPS infrastructure serving multiple production applications and domains from a single organized environment.
+  \item Built Docker Compose based service layouts for application stacks, databases, object storage, and shared infrastructure services.
+  \item Configured Nginx as an edge reverse proxy with domain routing, TLS configuration, security headers, CORS includes, rate limiting, default deny behavior, and shared error pages.
+  \item Managed production containers for APIs, landing pages, dashboards, PostgreSQL, Redis, MySQL, MinIO, Adminer, and PhpMyAdmin.
+  \item Implemented GitHub Actions release workflows using Docker Buildx, GitHub Container Registry authentication, semantic version tags, release image publishing, and production metadata.
+  \item Used container health checks, versioned images, isolated ports, and internal service routing to maintain reliable deployments.
+\end{itemize}
+
+% ---------- Security ----------
+\section*{Security Background}
+
+\begin{itemize}
+  \item Completed security-focused training in ethical hacking, penetration testing, and SOC analyst workflows.
+  \item Practiced vulnerability assessment, attack-chain analysis, web application security testing, and offensive security concepts in controlled and learning-oriented contexts.
+  \item Apply attacker mindset to software engineering decisions including authentication, authorization, API exposure, input validation, rate limiting, logging, and infrastructure hardening.
+  \item Familiar with OWASP concepts, secure deployment practices, secrets handling, network-aware architecture, and defense-in-depth thinking.
+\end{itemize}
+
+% ---------- Education ----------
+\section*{Education}
+
+\entry
+  {Galala University}
+  {2024 -- 2027}
+  {Computer Science Student}
+  {Desouq, Egypt}
+
+\begin{itemize}
+  \item Focus areas: software engineering, backend systems, cybersecurity, infrastructure, secure software development, and production deployment.
+\end{itemize}
+
+% ---------- Certifications ----------
+\section*{Certifications \& Training}
+
+\begin{itemize}
+  \item SOC Analyst Diploma
+  \item Ethical Hacking and Penetration Testing Courses
+  \item Software Testing Training
+  \item Practical backend, DevOps, and security engineering experience through real production systems
+\end{itemize}
+
+
+
+\end{document}

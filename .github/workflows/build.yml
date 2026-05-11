@@ -1,0 +1,54 @@
+name: Build LaTeX
+
+on:
+  push:
+    branches: ["**"]
+    tags-ignore: ["v*"]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      engine:
+        description: "LaTeX engine to use (pdflatex, xelatex, lualatex)"
+        required: false
+        default: "xelatex"
+        type: choice
+        options:
+          - pdflatex
+          - xelatex
+          - lualatex
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: ${{ github.event_name == 'workflow_dispatch' && fromJSON('["pdflatex","xelatex","lualatex"]') || fromJSON('["xelatex"]') }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile PDF (${{ matrix.engine }} via latexmk)
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: index.tex
+          working_directory: src
+          latexmk_use_xelatex: ${{ matrix.engine == 'xelatex' }}
+          latexmk_use_lualatex: ${{ matrix.engine == 'lualatex' }}
+          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=../dist
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-${{ matrix.engine }}-${{ github.sha }}
+          path: dist/*.pdf
+          if-no-files-found: error
