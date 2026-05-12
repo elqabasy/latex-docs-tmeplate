@@ -40,7 +40,7 @@ jobs:
           roots=()
           for f in "${files[@]}"; do
             if grep -Eq '^[[:space:]]*\\documentclass' "$f"; then
-              roots+=("$f")
+              roots+=("${f#src/}")
             fi
           done
           if [[ ${#roots[@]} -eq 0 ]]; then
@@ -53,13 +53,21 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Clean dist
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          mkdir -p dist
+
       - name: Compile PDFs (${{ inputs.engine || 'xelatex' }} via latexmk)
         uses: xu-cheng/latex-action@v4
         with:
           root_file: ${{ steps.discover.outputs.root_files }}
+          working_directory: src
           latexmk_use_xelatex: ${{ (inputs.engine || 'xelatex') == 'xelatex' }}
           latexmk_use_lualatex: ${{ (inputs.engine || 'xelatex') == 'lualatex' }}
-          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=dist
+          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=../dist
 
       - name: Prepare release assets
         run: |

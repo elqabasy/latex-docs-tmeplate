@@ -1,80 +1,78 @@
-% Keep the preamble modular so developers can reuse parts across projects.
-\input{metadata}
+% Keep the preamble modular so it can be reused across documents.
 
+
+% ---------- Packages ----------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{charter}
 \usepackage[margin=1.45cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
+\usepackage{microtype}
 \usepackage{setspace}
 
-\input{components/typography}
-\input{components/links}
-\input{components/figures}
-\input{components/math}
-\input{components/code}
-\input{components/macros}
-\input{components/biblatex}
 
-% ---------- Page Setup ----------
-\pagestyle{empty}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setstretch{1.03}
+% % ---------- Colors ----------
+% \definecolor{heading}{HTML}{111827} % near-black
+% \definecolor{text}{HTML}{111827}
+% \definecolor{muted}{HTML}{4B5563}   % gray-600
 
-% ---------- Colors ----------
-\definecolor{heading}{HTML}{111827}
-\definecolor{text}{HTML}{1F2937}
-\definecolor{muted}{HTML}{4B5563}
-\definecolor{rulecolor}{HTML}{D1D5DB}
+% \hypersetup{
+%   colorlinks=true,
+%   linkcolor=heading,
+%   urlcolor=heading,
+%   citecolor=heading
+% }
 
-% ---------- Section Styling ----------
-\titleformat{\section}
-  {\large\bfseries\color{heading}}
-  {}
-  {0pt}
-  {}
-  [\vspace{2pt}{\color{rulecolor}\titlerule}]
 
-\titlespacing*{\section}{0pt}{10pt}{6pt}
+% % ---------- Page Setup ----------
+% \pagestyle{empty}
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{0pt}
+% \setstretch{1.03}
 
-% ---------- Lists ----------
-\setlist[itemize]{
-  leftmargin=1.4em,
-  itemsep=2pt,
-  topsep=3pt,
-  parsep=0pt,
-  partopsep=0pt
-}
+% % ---------- Lists ----------
+% \setlist[itemize]{
+%   leftmargin=1.4em,
+%   itemsep=2pt,
+%   topsep=3pt,
+%   parsep=0pt,
+%   partopsep=0pt
+% }
 
-% ---------- Template-specific Commands ----------
-\newcommand{\name}[1]{
-  {\Huge \bfseries \color{heading} #1}
-}
+% % ---------- Headings ----------
+% \titleformat{\section}{\large\bfseries\color{heading}}{}{0pt}{}
+% \titlespacing*{\section}{0pt}{6pt}{4pt}
 
-\newcommand{\role}[1]{
-  \vspace{3pt}
-  {\large \color{text} #1}
-}
+% % ---------- Template-specific Commands ----------
+% \newcommand{\name}[1]{
+%   {\Huge \bfseries \color{heading} #1}
+% }
 
-\newcommand{\contact}[1]{
-  \vspace{6pt}
-  {\small \color{muted} #1}
-}
+% \newcommand{\role}[1]{
+%   \vspace{3pt}
+%   {\large \color{text} #1}
+% }
 
-\newcommand{\entry}[4]{
-  \textbf{\color{heading} #1} \hfill {\small \color{muted} #2}\\
-  {\color{text} #3} \hfill {\small \color{muted} #4}
-  \vspace{2pt}
-}
+% \newcommand{\contact}[1]{
+%   \vspace{6pt}
+%   {\small \color{muted} #1}
+% }
 
-\newcommand{\project}[3]{
-  \textbf{\color{heading} #1} \hfill {\small \color{muted} #2}\\
-  {\small \color{muted} #3}
-  \vspace{2pt}
-}
+% \newcommand{\entry}[4]{
+%   \textbf{\color{heading} #1} \hfill {\small \color{muted} #2}\\
+%   {\color{text} #3} \hfill {\small \color{muted} #4}
+%   \vspace{2pt}
+% }
 
-\newcommand{\skillgroup}[2]{
-  \textbf{\color{heading} #1:} #2\par
-}
+% \newcommand{\project}[3]{
+%   \textbf{\color{heading} #1} \hfill {\small \color{muted} #2}\\
+%   {\small \color{muted} #3}
+%   \vspace{2pt}
+% }
+
+% \newcommand{\skillgroup}[2]{
+%   \textbf{\color{heading} #1:} #2\par
+% }
