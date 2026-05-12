@@ -1,0 +1,11 @@
+% Common, reusable helpers
+\newcommand{\email}[1]{\href{mailto:#1}{#1}}
+\newcommand{\urltext}[2]{\href{#1}{#2}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\kbd}[1]{\fbox{\small\textsf{#1}}}
+\newcommand{\TODO}[1]{\textcolor{red}{[TODO: #1]}}
+
+% Tight lists (for resumes/compact docs)
+\newenvironment{tightitemize}{%
+  \begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\topsep}{3pt}%
+}{\end{itemize}}

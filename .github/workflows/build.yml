@@ -54,7 +54,7 @@ jobs:
             exit 2
           fi
           {
-            echo "root_files<<'EOF'"
+            echo "root_files<<EOF"
             printf '%s\n' "${roots[@]}"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"

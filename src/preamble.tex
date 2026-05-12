@@ -1,13 +1,21 @@
+% Keep the preamble modular so developers can reuse parts across projects.
+\input{metadata}
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{charter}
 \usepackage[margin=1.45cm]{geometry}
-\usepackage[hidelinks]{hyperref}
-\usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{microtype}
 \usepackage{setspace}
+
+\input{components/typography}
+\input{components/links}
+\input{components/figures}
+\input{components/math}
+\input{components/code}
+\input{components/macros}
+\input{components/biblatex}
 
 % ---------- Page Setup ----------
 \pagestyle{empty}
@@ -40,7 +48,7 @@
   partopsep=0pt
 }
 
-% ---------- Custom Commands ----------
+% ---------- Template-specific Commands ----------
 \newcommand{\name}[1]{
   {\Huge \bfseries \color{heading} #1}
 }
