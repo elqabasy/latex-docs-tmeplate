@@ -42,6 +42,7 @@ try {
       & $xelatex.Source `
         -interaction=nonstopmode `
         -halt-on-error `
+        -file-line-error `
         "-output-directory=$TempPath" `
         $SourcePath
 

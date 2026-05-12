@@ -37,14 +37,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Compile PDF (${{ matrix.engine }} via latexmk)
+      - name: Discover LaTeX entrypoints (\\documentclass)
+        id: discover
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' files < <(find src -type f -name '*.tex' -print0)
+          roots=()
+          for f in "${files[@]}"; do
+            if grep -Eq '^[[:space:]]*\\documentclass' "$f"; then
+              roots+=("$f")
+            fi
+          done
+          if [[ ${#roots[@]} -eq 0 ]]; then
+            echo "No entrypoint .tex files found under src/ (expected files containing \\documentclass)." >&2
+            exit 2
+          fi
+          {
+            echo "root_files<<'EOF'"
+            printf '%s\n' "${roots[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Compile PDFs (${{ matrix.engine }} via latexmk)
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: index.tex
-          working_directory: src
+          root_file: ${{ steps.discover.outputs.root_files }}
           latexmk_use_xelatex: ${{ matrix.engine == 'xelatex' }}
           latexmk_use_lualatex: ${{ matrix.engine == 'lualatex' }}
-          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=../dist
+          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=dist
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
